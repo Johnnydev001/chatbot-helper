@@ -1,10 +1,11 @@
-.container {
+.chatbot-container {
 
     color: black;
     display: grid;
     row-gap: 1rem;
     justify-items: center;
     align-items: center;
+    padding: 2rem;
 
     .chatbot {
         height: 10rem;
@@ -29,14 +30,15 @@
         margin: 0;
     }
 
-    .sub-container {
+    .chatbot-sub-container {
         display: grid;
         justify-items: center;
         align-items: center;
         text-align: center;
+        row-gap: 2rem;
 
         .sub-heading {
-            font-size: 1.5em;
+            font-size: 1.25em;
             margin: 0;
             font-weight: normal;
         }

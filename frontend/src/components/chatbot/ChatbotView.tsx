@@ -1,24 +1,27 @@
 import './chatbot.scss'
 
-export const ChatbotView = () => {
+export const ChatbotView = (
+    {displayChatbotIntro = false, setDisplayChatbotIntro = () => {}}) => {
+
+    const handleClick = (event: { preventDefault: () => void }) => {
+        event.preventDefault()
+        setDisplayChatbotIntro(!displayChatbotIntro)
+    }
 
     return (
-        <section aria-label={'chatbot section'} className={'container'}>
+        <section aria-label={'chatbot section'} className={'chatbot-container'}>
 
             <img src={'/imgs/chatbot.jpg'} alt={'Chatbot'} className={'chatbot'}/>
-            <h1 className={'heading'}>Hello</h1>
+            <h1 className={'heading'}>Hi there!</h1>
 
-            <div className={'sub-container'}>
+            <div className={'chatbot-sub-container'}>
 
                 <h2 className={'sub-heading'}>My name is Johnny.</h2>
-                <p className={'description'}>I am here to help you with everything you need.</p>
+                <button onClick={handleClick} className={'btn'} role={"button"} title={"ask question button"}>
+                    Ask me a question
 
+                </button>
             </div>
-
-            <button className={'btn'} role={"button"} title={"ask question button"}>
-                Ask me a question
-
-            </button>
 
 
         </section>
