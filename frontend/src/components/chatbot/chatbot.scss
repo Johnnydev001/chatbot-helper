@@ -9,7 +9,6 @@
     .chatbot {
         height: 10rem;
         width: 10rem;
-
     }
     .chatbot:hover {
         transform: scale(1.2);
@@ -25,7 +24,8 @@
 
 
     .heading {
-        font-size: 2.5em;
+        font-weight: 500;
+        font-size: 2em;
         margin: 0;
     }
 
@@ -36,15 +36,12 @@
         text-align: center;
 
         .sub-heading {
-            font-size: 1em;
+            font-size: 1.5em;
             margin: 0;
-            max-width: 10rem;
+            font-weight: normal;
         }
 
     }
-
-
-
 
     .btn {
         border-radius: 8px;
@@ -53,19 +50,19 @@
         font-size: 1em;
         font-weight: 500;
         font-family: inherit;
-        background-color: #1a1a1a;
         cursor: pointer;
         transition: border-color 0.25s;
 
+        background-color: #2d6a70;
     }
     .btn:hover {
-        border-color: #646cff;
+        border-color: black;
+        box-shadow: #242424 0px 0px 0.5px 1px;
+        background-color: #38848c;
     }
     .btn:focus,
     .btn:focus-visible {
         outline: 4px auto -webkit-focus-ring-color;
     }
-
-
 
 }

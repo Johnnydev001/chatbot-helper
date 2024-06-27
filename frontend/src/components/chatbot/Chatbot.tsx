@@ -4,6 +4,4 @@ export const Chatbot = () => {
 
         return <ChatbotView />
 
-
-
 }

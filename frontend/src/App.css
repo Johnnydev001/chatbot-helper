@@ -1,7 +1,7 @@
 #root {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem 1rem 0rem 1rem;
   text-align: center;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   background: #ffffff;
 }
