@@ -1,18 +1,20 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 
 export const ChatView = (
     {displayChatbotIntro = false, setDisplayChatbotIntro = () => {},
-        setInputMessage = () => {}}) => {
+        setInputMessage = () => {}}: {
+        displayChatbotIntro : boolean, setDisplayChatbotIntro : (displayChatBotIntro: boolean) => void,
+setInputMessage : () => void
+    }) => {
 
     const [messageInput, setMessageInput] = useState<string>('')
 
-    const handleClick = (event: { preventDefault: () => void }) => {
+    const handleClick = useCallback((event: { preventDefault: () => void }) => {
         event.preventDefault()
         setDisplayChatbotIntro(!displayChatbotIntro)
-    }
+    }, [displayChatbotIntro])
 
     const handleInputChange = (event: any) =>  {
-
         event.preventDefault();
         console.log('event, event', event)
 

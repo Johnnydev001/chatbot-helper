@@ -1,7 +1,9 @@
 import './chatbot.scss'
 
 export const ChatbotView = (
-    {displayChatbotIntro = false, setDisplayChatbotIntro = () => {}}) => {
+    {displayChatbotIntro = false, setDisplayChatbotIntro = () => {}}: {
+        displayChatbotIntro: boolean, setDisplayChatbotIntro: (displayChatBotIntro: boolean) => void
+    }) => {
 
     const handleClick = (event: { preventDefault: () => void }) => {
         event.preventDefault()

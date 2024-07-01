@@ -1,0 +1,12 @@
+@import '../../../../styles/variables.scss';
+
+.chat-messages-container {
+  .chat-message {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: $borderRadius;
+    border: $border;
+
+  }
+}

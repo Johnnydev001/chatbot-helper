@@ -1,5 +1,4 @@
-$borderRadius: 0.5rem;
-$lightGray: #D3D3D3FF;
+@import '../../../styles/variables.scss';
 
 .chat-container {
 
@@ -41,12 +40,12 @@ $lightGray: #D3D3D3FF;
   }
 
   .chat-sub-container {
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem;
     width: 100%;
     display: grid;
     align-self: end;
     justify-items: center;
-    border: 1px solid $lightGray;
+    border: $border;
     border-bottom-left-radius: $borderRadius;
     border-bottom-right-radius: $borderRadius;
 
@@ -69,7 +68,7 @@ $lightGray: #D3D3D3FF;
           padding:1rem;
           color: #000000;
           background-color: #ffffff;
-          border: 0.5px solid $lightGray;
+          border: $border;
           justify-self: start;
           font-size: 1rem;
           border-radius: $borderRadius;
@@ -85,7 +84,7 @@ $lightGray: #D3D3D3FF;
 
         .send-btn {
           border-radius: 8px;
-          border: 1px solid transparent;
+          border: $border;
           padding: 0.6em 1.2em;
           font-size: 1em;
           font-weight: 500;

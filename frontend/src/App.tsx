@@ -1,6 +1,6 @@
 import './App.css'
-import {Chatbot} from "./components/chatbot/Chatbot.tsx";
-import {Chat} from "./components/chat/Chat.tsx";
+import {Chatbot} from "./ui/components/chatbot/Chatbot.tsx";
+import {Chat} from "./ui/components/chat/Chat.tsx";
 import {useState} from "react";
 
 function App() {
