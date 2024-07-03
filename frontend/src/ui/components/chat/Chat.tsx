@@ -7,7 +7,7 @@ export const Chat = (
         displayChatbotIntro: boolean, setDisplayChatbotIntro: (displayChatBotIntro: boolean) => void
     }) => {
 
-    const [inputMessage, setInputMessage] = useState<string>('')
+    const [, setInputMessage] = useState<string>('')
 
     return (
         <ChatView  displayChatbotIntro={displayChatbotIntro} setDisplayChatbotIntro={setDisplayChatbotIntro} setInputMessage={setInputMessage}/>

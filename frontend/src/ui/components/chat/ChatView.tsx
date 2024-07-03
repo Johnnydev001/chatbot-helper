@@ -1,22 +1,22 @@
-import {useCallback, useState} from "react";
+import {useCallback} from "react";
 
 export const ChatView = (
     {displayChatbotIntro = false, setDisplayChatbotIntro = () => {},
         setInputMessage = () => {}}: {
         displayChatbotIntro : boolean, setDisplayChatbotIntro : (displayChatBotIntro: boolean) => void,
-setInputMessage : () => void
+setInputMessage : (x: string) => void
     }) => {
 
-    const [messageInput, setMessageInput] = useState<string>('')
+    //const [messageInput, setMessageInput] = useState<string>('')
 
     const handleClick = useCallback((event: { preventDefault: () => void }) => {
         event.preventDefault()
         setDisplayChatbotIntro(!displayChatbotIntro)
     }, [displayChatbotIntro])
 
-    const handleInputChange = (event: any) =>  {
+    const handleInputChange = (event: { preventDefault: () => void; target: { value: any; }; }) =>  {
         event.preventDefault();
-        console.log('event, event', event)
+        setInputMessage(event?.target?.value)
 
     }
 
@@ -41,7 +41,7 @@ setInputMessage : () => void
 
                     <form className={'submit-form'} onSubmit={handleFormSubmit}>
                         <input aria-label={'text input'} className={'text-input'} type={'text'} title={'Type a message'}
-                               placeholder={'Type a message'} onChange={handleInputChange} on/>
+                               placeholder={'Type a message'} onChange={handleInputChange}/>
                         <button className={'send-btn'} aria-label={'send message'} title={'Send message'}
                                 role={"button"}> Send
                         </button>
