@@ -22,14 +22,17 @@ stages:
         version: '18.17.0'
       displayName: Install NodeJS
 
-    - script: npm install -D vite
+    - script: |
+        cd ${frontendPath}
+        npm install -D vite
       displayName: Install dependencies
-      workingDirectory: ${frontendPath}
 
-    - script: npm run lint
+    - script: |
+        cd ${frontendPath}
+        npm run lint
       displayName: Run lint
-      workingDirectory: ${frontendPath}
 
-    - script: npm run build
+    - script: | 
+        cd ${frontendPath}
+        npm run build
       displayName: Create build
-      workingDirectory: ${frontendPath}
