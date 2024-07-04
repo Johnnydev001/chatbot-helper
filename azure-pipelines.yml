@@ -17,7 +17,7 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool: Self-hosted-agent
+    pool: Azure Pipelines
     steps:
     - task: Docker@2
       displayName: Build an image
