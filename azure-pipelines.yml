@@ -27,7 +27,7 @@ stages:
       npm install
     displayName: Install dependencies
 
-    -script: |
+    - script: |
       npm run lint
     displayName: Run lint
 
