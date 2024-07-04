@@ -16,7 +16,7 @@ stages:
     steps:
     - task: UseNode@1
       inputs: 
-        version: '16.19.0'
+        version: '18.17.0'
       displayName: Install NodeJS
 
     - script: |
