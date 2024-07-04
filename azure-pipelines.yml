@@ -22,13 +22,17 @@ stages:
     - script: |
         cd "frontend"
         ls
-      displayName: 'Listing frontend directory contents before install'
+      displayName: 'Listing frontend directory contents BEFORE install'
 
-    - script: npm install
+    - script: |
+        cd "frontend"
+        npm install
       displayName: Install dependencies
 
-    - script: ls
-      displayName: 'Listing frontend directory contents after install'
+    - script: |
+        cd "frontend"
+        ls
+      displayName: 'Listing frontend directory contents AFTER install'
 
     - script: npm run lint
       displayName: Run lint
