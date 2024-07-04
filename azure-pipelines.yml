@@ -28,7 +28,6 @@ stages:
     - script: npm run lint
       displayName: Run lint
 
-    - script: |
-      npm run build
+    - script: npm run build
       displayName: Create build
 
