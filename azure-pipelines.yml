@@ -20,24 +20,15 @@ stages:
       displayName: Install NodeJS
 
     - script: |
-        echo "Current working directory:"
-        pwd
-        echo "Listing root directory contents:"
-        ls -la
         cd "frontend"
-        echo "Listing frontend directory contents:"
-        ls -la
-        echo "Printing package.json contents:"
-        cat package.json
-      displayName: 'Inspect frontend directory and package.json'
+        ls
+      displayName: 'Listing frontend directory contents before install'
 
     - script: npm install
       displayName: Install dependencies
 
-    - script: |
-        ls -la
-        cat package.json 
-      displayName: Change directory to frontend
+    - script: ls
+      displayName: 'Listing frontend directory contents after install'
 
     - script: npm run lint
       displayName: Run lint
