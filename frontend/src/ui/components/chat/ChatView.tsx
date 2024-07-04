@@ -14,7 +14,7 @@ setInputMessage : (x: string) => void
         setDisplayChatbotIntro(!displayChatbotIntro)
     }, [displayChatbotIntro])
 
-    const handleInputChange = (event: { preventDefault: () => void; target: { value: any; }; }) =>  {
+    const handleInputChange = (event: { preventDefault: () => void; target: { value: string; }; }) =>  {
         event.preventDefault();
         setInputMessage(event?.target?.value)
 

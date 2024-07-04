@@ -1,5 +1,6 @@
+import { ChatMessageType } from "./ChatMessages"
 
-export const ChatMessage = ({sender = '', message =  '', time = '' }: { sender: string, message: '', time: string}) => {
+export const ChatMessage = ({sender = '', message =  '', time = '' }: ChatMessageType) => {
 
     return <article className={'chat-message'}>
 
