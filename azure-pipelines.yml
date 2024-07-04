@@ -8,15 +8,15 @@ pool: self-hosted-pool
 
 stages:
 - stage: Build
-  displayName: Build frontend
+  displayName: Build frontend stage
   jobs:
   - job: Build
-    displayName: Build frontend
+    displayName: Build frontend job
 
     steps:
     - task: UseNode@1
       inputs: 
-        versionSpec: '16.x'
+        versionSpec: '16.19.0'
       displayName: Install NodeJS
 
     - script: cd frontend
@@ -24,6 +24,11 @@ stages:
 
     - script: npm install
       displayName: Install dependencies
+
+    - script: |
+      ls -la
+      cat package.json 
+      displayName: Change directory to frontend
 
     - script: npm run lint
       displayName: Run lint
