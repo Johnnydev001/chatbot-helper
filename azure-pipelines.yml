@@ -16,7 +16,7 @@ stages:
     steps:
     - task: UseNode@1
       inputs:
-        checkLatest: true
+        version: '18.17.0'
       displayName: Install NodeJS
 
     - script: |
@@ -35,7 +35,10 @@ stages:
       displayName: 'Listing frontend directory contents AFTER install'
 
     - script: |
+
         cd "frontend"
+        echo "Current directory contents:"
+        ls
         npm run lint
       displayName: Run lint
 
