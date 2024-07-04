@@ -34,7 +34,9 @@ stages:
         ls
       displayName: 'Listing frontend directory contents AFTER install'
 
-    - script: npm run lint
+    - script: |
+        cd "frontend"
+        npm run lint
       displayName: Run lint
 
     - script: npm run build
