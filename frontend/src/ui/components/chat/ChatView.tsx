@@ -12,7 +12,7 @@ setInputMessage : (x: string) => void
     const handleClick = useCallback((event: { preventDefault: () => void }) => {
         event.preventDefault()
         setDisplayChatbotIntro(!displayChatbotIntro)
-    }, [displayChatbotIntro])
+    }, [displayChatbotIntro, setDisplayChatbotIntro])
 
     const handleInputChange = (event: { preventDefault: () => void; target: { value: string; }; }) =>  {
         event.preventDefault();
