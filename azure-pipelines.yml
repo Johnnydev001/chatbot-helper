@@ -19,8 +19,17 @@ stages:
         versionSpec: '16.19.0'
       displayName: Install NodeJS
 
-    - script: cd frontend
-      displayName: Change directory to frontend
+    - script: |
+        echo "Current working directory:"
+        pwd
+        echo "Listing root directory contents:"
+        ls -la
+        cd "frontend"
+        echo "Listing frontend directory contents:"
+        ls -la
+        echo "Printing package.json contents:"
+        cat package.json
+      displayName: 'Inspect frontend directory and package.json'
 
     - script: npm install
       displayName: Install dependencies
