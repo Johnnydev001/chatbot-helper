@@ -4,6 +4,9 @@ trigger:
 resources:
 - repo: self
 
+variables:
+  frontendPath: 'frontend'
+
 pool: self-hosted-pool
 
 stages:
@@ -19,28 +22,14 @@ stages:
         version: '18.17.0'
       displayName: Install NodeJS
 
-    - script: |
-        cd "frontend"
-        ls
-      displayName: 'Listing frontend directory contents BEFORE install'
-
-    - script: |
-        cd "frontend"
-        npm install -D vite
+    - script: npm install -D vite
       displayName: Install dependencies
+      workingDirectory: ${frontendPath}
 
-    - script: |
-        cd "frontend"
-        ls
-      displayName: 'Listing frontend directory contents AFTER install'
-
-    - script: |
-
-        cd "frontend"
-        echo "Current directory contents:"
-        ls
-        npm run lint
+    - script: npm run lint
       displayName: Run lint
+      workingDirectory: ${frontendPath}
 
     - script: npm run build
       displayName: Create build
+      workingDirectory: ${frontendPath}
