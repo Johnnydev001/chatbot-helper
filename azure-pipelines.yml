@@ -30,11 +30,11 @@ stages:
         workingDir:  $(frontendPath)
 
     - task: Npm@1
-      displayName: Run lint
       inputs:
         command: 'custom'
-        customComand: 'lint'
-        workingDir: $(frontendPath)
+        customCommand: 'run lint'
+      workingDir: $(frontendPath)
+      displayName: 'Run lint'
 
     - task: Npm@1
       displayName: Run build
