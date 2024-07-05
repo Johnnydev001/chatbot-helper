@@ -49,7 +49,7 @@ stages:
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/build'
         Contents: '**'
-              TargetFolder: '$(Build.ArtifactStagingDirectory)/build'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/build'
 
     - task: PublishBuildArtifacts@1
       inputs:
