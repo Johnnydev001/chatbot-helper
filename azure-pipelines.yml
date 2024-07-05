@@ -24,22 +24,21 @@ stages:
 
     - task: Npm@1
       displayName: Install dependencies
-
       inputs:
         command: 'custom'
         customCommand: 'install -D vite'
         workingDir:  $(frontendPath)
 
     - task: Npm@1
-      displayName: 'Run lint'
+      displayName: Run lint
       inputs:
         command: 'custom'
-        customComand: 'run lint'
+        customComand: 'lint'
         workingDir: $(frontendPath)
 
     - task: Npm@1
-      displayName: 'Run build'
+      displayName: Run build
       inputs:
         command: 'custom'
-        customCommand: 'run build'
+        customCommand: 'build'
         workingDir: $(frontendPath)
