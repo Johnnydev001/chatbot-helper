@@ -18,12 +18,9 @@ stages:
     displayName: Build frontend job
 
     steps:
-    - task: UseNode@1
-      displayName: Install NodeJS
-      inputs:
-        version: 18.17.0
+   
     
-    - template: frontend-build-template.yml
+    - template: build-template.yml
       parameters:
         workingDir: $(frontendPath)
         buildOutputPath: $(buildOutputPath)
