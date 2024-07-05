@@ -24,7 +24,7 @@ stages:
 
     - script: |
         cd ${frontendPath}
-        npm install -D vite
+        npm install
       displayName: Install dependencies
 
     - script: |
