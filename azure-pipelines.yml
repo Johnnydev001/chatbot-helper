@@ -35,11 +35,11 @@ stages:
       displayName: 'Listing frontend directory contents AFTER install'
 
     - script: |
-
         cd "frontend"
-        echo "Current directory contents"
         npm run lint
       displayName: Run lint
 
-    - script: npm run build
+    - script: |
+        cd "frontend"
+        npm run build
       displayName: Create build
