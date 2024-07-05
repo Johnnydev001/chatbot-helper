@@ -47,15 +47,14 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy build output to artifact directory'
       inputs:
-        SourceFolder: '$(Build.SourcesDirectory)/$(buildOutputPath)'
+        SourceFolder: '$(Build.SourcesDirectory)/build'
         Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)/$(buildOutputPath)'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)/build'
 
     - task: PublishBuildArtifacts@1
       inputs:
-        PathToPublish: '$(Build.ArtifactStagingDirectory)/$(buildOutputPath)'
-        ArtifactName: frontend-build
-        publishLocation: Container
-      displayName: Publish frontend build artifact
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/build'
+        ArtifactName: 'react-build'
+      displayName: 'Publish build artifacts'
       
   
