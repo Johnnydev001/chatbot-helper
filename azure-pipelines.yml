@@ -28,18 +28,18 @@ stages:
       inputs:
         command: 'custom'
         customCommand: 'npm install -D vite'
-        workingDir: ${frontendPath}
+        workingDir:  $(frontendPath)
 
     - task: Npm@1
       displayName: 'Run lint'
       inputs:
         command: 'custom'
         customComand: 'npm run lint'
-        workingDir: ${frontendPath}
+        workingDir: $(frontendPath)
 
     - task: Npm@1
       displayName: 'Run build'
       inputs:
         command: 'custom'
         customCommand: 'npm run build'
-        workingDir: ${frontendPath}
+        workingDir: $(frontendPath)
