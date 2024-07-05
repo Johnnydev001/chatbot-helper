@@ -33,7 +33,7 @@ stages:
       inputs:
         command: 'custom'
         customCommand: 'run lint'
-      workingDir: $(frontendPath)
+        workingDir: $(frontendPath)
       displayName: 'Run lint'
 
     - task: Npm@1
