@@ -45,7 +45,7 @@ stages:
         workingDir: $(frontendPath)
 
     - task: CopyFiles@2
-      diplayName: 'Copy build output to artifact directory'
+      displayName: 'Copy build output to artifact directory'
       inputs:
         SourceFolder: '$(frontendPath)/$(buildOutputPath)'
         Contents: '**'
