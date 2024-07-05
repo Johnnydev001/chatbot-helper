@@ -21,7 +21,7 @@ stages:
     - task: UseNode@1
       displayName: Install NodeJS
       inputs:
-        version: '18.17.0'
+        version: 18.17.0
 
     - task: Npm@1
       displayName: Install dependencies
@@ -45,16 +45,16 @@ stages:
         workingDir: $(frontendPath)
 
     - task: CopyFiles@2
-      displayName: 'Copy build output to artifact directory'
+      displayName: Copy build output to artifact directory
       inputs:
         SourceFolder: $(frontendPath)
-        Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)/build'
+        Contents: **
+        TargetFolder: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
 
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)/build'
-        ArtifactName: 'react-build'
-      displayName: 'Publish build artifacts'
+        PathtoPublish: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
+        ArtifactName: frontend-build-artifact
+      displayName: Publish build artifacts
       
   
