@@ -47,7 +47,7 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy build output to artifact directory'
       inputs:
-        SourceFolder: '$(Build.SourcesDirectory)/build'
+        SourceFolder: $(frontendPath)
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)/build'
 
