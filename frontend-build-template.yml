@@ -1,0 +1,37 @@
+parameters:
+  workingDir: frontend
+  buildOutputPath: build
+
+- task: Npm@1
+    displayName: Install dependencies
+    inputs:
+      command: custom
+      customCommand: install -D vite
+      workingDir:  ${{ workingDir }}
+
+- task: Npm@1
+  inputs:
+    command: custom
+    customCommand: run lint
+    workingDir: ${{ workingDir }}
+  displayName: Run lint
+
+- task: Npm@1
+  displayName: Run build
+  inputs:
+    command: custom
+    customCommand: run build
+    workingDir: ${{ workingDir }}
+
+- task: CopyFiles@2
+  displayName: Copy build output to artifact directory
+  inputs:
+    SourceFolder: ${{ workingDir }}/dist
+    Contents: '**'
+    TargetFolder: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
+    ArtifactName: frontend-build-artifact
+  displayName: Publish build artifacts

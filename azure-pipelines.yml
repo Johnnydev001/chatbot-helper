@@ -22,39 +22,8 @@ stages:
       displayName: Install NodeJS
       inputs:
         version: 18.17.0
-
-    - task: Npm@1
-      displayName: Install dependencies
-      inputs:
-        command: custom
-        customCommand: install -D vite
-        workingDir:  $(frontendPath)
-
-    - task: Npm@1
-      inputs:
-        command: custom
-        customCommand: run lint
+    
+    - template: frontend-build-template.yml
+      parameters:
         workingDir: $(frontendPath)
-      displayName: Run lint
-
-    - task: Npm@1
-      displayName: Run build
-      inputs:
-        command: custom
-        customCommand: run build
-        workingDir: $(frontendPath)
-
-    - task: CopyFiles@2
-      displayName: Copy build output to artifact directory
-      inputs:
-        SourceFolder: $(frontendPath)/dist
-        Contents: '**'
-        TargetFolder: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
-        ArtifactName: frontend-build-artifact
-      displayName: Publish build artifacts
-      
-  
+        buildOutputPath: $(buildOutputPath)
