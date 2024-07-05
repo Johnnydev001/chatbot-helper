@@ -40,5 +40,5 @@ stages:
       displayName: Run build
       inputs:
         command: 'custom'
-        customCommand: 'build'
+        customCommand: 'run build'
         workingDir: $(frontendPath)
