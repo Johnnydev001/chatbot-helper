@@ -7,7 +7,8 @@ resources:
 pool: self-hosted-pool
 
 variables:
-  frontendPath: frontend
+  type: frontend
+  frontendFolder: frontend
   buildOutputPath: build
 
 stages:
@@ -18,9 +19,9 @@ stages:
     displayName: Build frontend job
 
     steps:
-   
     
     - template: build-template.yml
       parameters:
-        workingDir: $(frontendPath)
+        type: $(type)
+        workingDir: $(frontendFolder)
         buildOutputPath: $(buildOutputPath)

@@ -4,8 +4,8 @@ parameters:
   buildOutputPath: build
 
 steps:
-  - script: echo "Building ${{ type }} project"
-    displayName: Building ${{ type }} project
+  - script: echo "Building ${{ parameters.type }} project"
+    displayName: Building ${{ parameters.type }} project
 
   - task: UseNode@1
     displayName: Install NodeJS
@@ -18,13 +18,13 @@ steps:
     inputs:
       command: custom
       customCommand: install -D vite
-      workingDir:  ${{ workingDir }}
+      workingDir:  ${{ parameters.workingDir }}
 
   - task: Npm@1
     inputs:
       command: custom
       customCommand: run lint
-      workingDir: ${{ workingDir }}
+      workingDir: ${{ parameters.workingDir }}
     displayName: Run lint
 
   - task: Npm@1
@@ -32,17 +32,17 @@ steps:
     inputs:
       command: custom
       customCommand: run build
-      workingDir: ${{ workingDir }}
+      workingDir: ${{ parameters.workingDir }}
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
     inputs:
-      SourceFolder: ${{ workingDir }}/dist
+      SourceFolder: ${{ parameters.workingDir }}/dist
       Contents: '**'
-      TargetFolder: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
+      TargetFolder: $(Build.ArtifactStagingDirectory)/${{parameters.buildOutputPath}}
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
+      PathtoPublish: $(Build.ArtifactStagingDirectory)/${{parameters.buildOutputPath}}
       ArtifactName: frontend-build-artifact
     displayName: Publish build artifacts
