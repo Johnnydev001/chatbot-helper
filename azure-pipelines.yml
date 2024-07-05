@@ -6,6 +6,9 @@ resources:
 
 pool: self-hosted-pool
 
+variables:
+  frontendPath: 'frontend'
+
 stages:
 - stage: Build
   displayName: Build frontend stage
@@ -15,31 +18,28 @@ stages:
 
     steps:
     - task: UseNode@1
+      displayName: Install NodeJS
       inputs:
         version: '18.17.0'
-      displayName: Install NodeJS
 
-    - script: |
-        cd "frontend"
-        ls
-      displayName: 'Listing frontend directory contents BEFORE install'
-
-    - script: |
-        cd "frontend"
-        npm install -D vite
+    - task: Npm@1
       displayName: Install dependencies
 
-    - script: |
-        cd "frontend"
-        ls
-      displayName: 'Listing frontend directory contents AFTER install'
+      inputs:
+        command: 'custom'
+        customCommand: 'npm install -D vite'
+        workingDir: ${frontendPath}
 
-    - script: |
-        cd "frontend"
-        npm run lint
-      displayName: Run lint
+    - task: Npm@1
+      displayName: 'Run lint'
+      inputs:
+        command: 'custom'
+        customComand: 'npm run lint'
+        workingDir: ${frontendPath}
 
-    - script: |
-        cd "frontend"
-        npm run build
-      displayName: Create build
+    - task: Npm@1
+      displayName: 'Run build'
+      inputs:
+        command: 'custom'
+        customCommand: 'npm run build'
+        workingDir: ${frontendPath}
