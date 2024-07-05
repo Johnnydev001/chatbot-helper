@@ -7,7 +7,8 @@ resources:
 pool: self-hosted-pool
 
 variables:
-  frontendPath: 'frontend'
+  frontendPath: frontend
+  buildOutputPath: build
 
 stages:
 - stage: Build
@@ -25,20 +26,36 @@ stages:
     - task: Npm@1
       displayName: Install dependencies
       inputs:
-        command: 'custom'
-        customCommand: 'install -D vite'
+        command: custom
+        customCommand: install -D vite
         workingDir:  $(frontendPath)
 
     - task: Npm@1
       inputs:
-        command: 'custom'
-        customCommand: 'run lint'
+        command: custom
+        customCommand: run lint
         workingDir: $(frontendPath)
-      displayName: 'Run lint'
+      displayName: Run lint
 
     - task: Npm@1
       displayName: Run build
       inputs:
-        command: 'custom'
-        customCommand: 'run build'
+        command: custom
+        customCommand: run build
         workingDir: $(frontendPath)
+
+    - task: CopyFiles@2
+      diplayName: 'Copy build output to artifact directory'
+      inputs:
+        SourceFolder: '$(frontendPath)/$(buildOutputPath)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/$(buildOutputPath)'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathToPublish: '$(Build.ArtifactStagingDirectory)/$(buildOutputPath)'
+        ArtifactName: frontend-build
+        publishLocation: Container
+      displayName: Publish frontend build artifact
+      
+  
