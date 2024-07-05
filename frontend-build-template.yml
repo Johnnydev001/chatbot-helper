@@ -3,11 +3,11 @@ parameters:
   buildOutputPath: build
 
 - task: Npm@1
-    displayName: Install dependencies
-    inputs:
-      command: custom
-      customCommand: install -D vite
-      workingDir:  ${{ workingDir }}
+  displayName: Install dependencies
+  inputs:
+    command: custom
+    customCommand: install -D vite
+    workingDir:  ${{ workingDir }}
 
 - task: Npm@1
   inputs:
