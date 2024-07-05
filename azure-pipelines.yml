@@ -48,7 +48,7 @@ stages:
       displayName: Copy build output to artifact directory
       inputs:
         SourceFolder: $(frontendPath)
-        Contents: **
+        Contents: '**'
         TargetFolder: $(Build.ArtifactStagingDirectory)/$(buildOutputPath)
 
     - task: PublishBuildArtifacts@1
