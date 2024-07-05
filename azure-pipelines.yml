@@ -28,7 +28,7 @@ stages:
       displayName: Install dependencies
 
     - script: |
-        cd ${frontendPath}
+        cd frontend
         npm run lint
       displayName: Run lint
 
