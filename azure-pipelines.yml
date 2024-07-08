@@ -19,9 +19,29 @@ stages:
     displayName: Build frontend job
 
     steps:
-    
     - template: build-template.yml
       parameters:
         type: $(type)
         workingDir: $(frontendFolder)
         buildOutputPath: $(buildOutputPath)
+
+- stage: Deploy
+  displayName: Deploy frontend app
+  dependsOn: Build
+  jobs:
+    - job: Deployment
+      displayName: Handle deployment job
+      environment: dev
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - download: current
+              artifact: drop
+            - task: AzureWebApp@1
+              displayName: Deploying app with name $(WebAppName)
+              inputs: 
+                azureSubscription: Chatbot helper app
+                appName: '$(WebAppName)'
+                package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+
