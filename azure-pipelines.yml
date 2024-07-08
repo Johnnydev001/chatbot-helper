@@ -26,22 +26,23 @@ stages:
         buildOutputPath: $(buildOutputPath)
 
 - stage: Deploy
-  displayName: Deploy frontend app
+  displayName: Deploy the web application
   dependsOn: Build
   jobs:
-    - job: Deployment
-      displayName: Handle deployment job
-      environment: dev
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-            - download: current
-              artifact: drop
-            - task: AzureWebApp@1
-              displayName: Deploying app with name $(WebAppName)
-              inputs: 
-                azureSubscription: Chatbot helper app
-                appName: '$(WebAppName)'
-                package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-
+  - deployment: Deploy
+    pool: self-hosted-pool
+    environment: dev
+    variables:
+    - group: Release
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          - task: AzureWebApp@1
+            displayName: 'App deployment: $(WebAppName)'
+            inputs:
+              azureSubscription: 'Chatbot helper'
+              appName: '$(WebAppName)'
+              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
