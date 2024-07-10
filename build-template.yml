@@ -2,8 +2,6 @@ parameters:
   type: frontend
   workingDir: frontend
   buildOutputPath: build
-
-variables:
   dockerImageName: chatbot-helper-frontend
 
 steps:
@@ -40,7 +38,7 @@ steps:
     displayName: Build docker image
     inputs:
       command: buildAndPush
-      repository: $(dockerImageName)
+      repository: ${{dockerImageName}}
       Dockerfile: $(Build.SourcesDirectory)/${{ parameters.workingDir }}/Dockerfile
 
   - task: CopyFiles@2

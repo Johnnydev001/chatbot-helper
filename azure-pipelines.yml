@@ -10,6 +10,7 @@ variables:
   type: frontend
   frontendFolder: frontend
   buildOutputPath: build
+  dockerImageName: chatbot-helper-frontend
 
 stages:
 - stage: Build
@@ -24,6 +25,7 @@ stages:
         type: $(type)
         workingDir: $(frontendFolder)
         buildOutputPath: $(buildOutputPath)
+        dockerImageName: $(dockerImageName
 
 #- stage: Deploy
 #  displayName: Deploy the web application
