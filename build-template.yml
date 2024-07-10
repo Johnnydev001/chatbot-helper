@@ -3,6 +3,9 @@ parameters:
   workingDir: frontend
   buildOutputPath: build
 
+variables:
+  dockerImageName: chatbot-helper-frontend
+
 steps:
   - script: echo "Building ${{ parameters.type }} project"
     displayName: Building ${{ parameters.type }} project
@@ -11,7 +14,6 @@ steps:
     displayName: Install NodeJS
     inputs:
       version: 18.17.0
-
 
   - task: Npm@1
     displayName: Install dependencies
@@ -33,6 +35,13 @@ steps:
       command: custom
       customCommand: run build
       workingDir: ${{ parameters.workingDir }}
+
+  - task: Docker@2
+    displayName: Build docker image
+    inputs:
+      command: buildAndPush
+      repository: $(dockerImageName)
+      Dockerfile: $(Build.SourcesDirectory)/${{ parameters.workingDir }}/Dockerfile
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
