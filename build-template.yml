@@ -34,15 +34,9 @@ steps:
       customCommand: run build
       workingDir: ${{ parameters.workingDir }}
 
-  - script: echo "Debugging the docker image"
-    displayName: Building ${{ parameters.dockerImageName }}
-
-  - task: Docker@2
+  - script: docker build -t ${{parameters.dockerImageName}} .
     displayName: Build docker image
-    inputs:
-      command: buildAndPush
-      repository: ${{parameters.dockerImageName}}
-      Dockerfile: ${{ parameters.workingDir }}/Dockerfile
+    workingDirectory: ${{ parameters.workingDir }}
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
