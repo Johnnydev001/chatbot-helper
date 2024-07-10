@@ -10,7 +10,7 @@ variables:
   type: frontend
   frontendFolder: frontend
   buildOutputPath: build
-  dockerImageName: chatbot-helper-frontend
+  dockerImageName: chatbot-helper-frontend:v1
 
 stages:
 - stage: Build
