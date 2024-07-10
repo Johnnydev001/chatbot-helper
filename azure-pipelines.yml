@@ -25,7 +25,7 @@ stages:
         type: $(type)
         workingDir: $(frontendFolder)
         buildOutputPath: $(buildOutputPath)
-        dockerImageName: $(dockerImageName
+        dockerImageName: $(dockerImageName)
 
 #- stage: Deploy
 #  displayName: Deploy the web application
