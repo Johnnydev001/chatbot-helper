@@ -38,7 +38,7 @@ steps:
     displayName: Build docker image
     inputs:
       command: buildAndPush
-      repository: ${{dockerImageName}}
+      repository: ${{parameters.dockerImageName}}
       Dockerfile: $(Build.SourcesDirectory)/${{ parameters.workingDir }}/Dockerfile
 
   - task: CopyFiles@2
