@@ -26,6 +26,8 @@ stages:
         workingDir: $(frontendFolder)
         buildOutputPath: $(buildOutputPath)
         dockerImageName: $(dockerImageName)
+        dockerUsername: $(dockerUsername)
+        dockerPassword: $(dockerPassword)
 
 #- stage: Deploy
 #  displayName: Deploy the web application
