@@ -35,18 +35,18 @@ steps:
       workingDir: ${{ parameters.workingDir }}
 
   - task: Docker@2
-    displayName: Build and push docker image
+    displayName: Docker login
     inputs:
       command: login
       containerRegistry: 'Docker Hub connection'
 
-  - script: docker build -t ${{parameters.dockerImageName}}
-    displayName: Build docker image
-    workingDirectory: ${{ parameters.workingDir }}
-
-  - script: docker push ${{parameters.dockerImageName}}
-    displayName: Push docker image
-    workingDirectory: ${{ parameters.workingDir }}
+  - task: Docker@2
+    displayName: Docker build image
+    inputs:
+        command: buildAndPush
+        repository: ${{ parameters.dockerImageName }}
+        tags: v1
+        containerRegistry: 'Docker Hub connection'
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
