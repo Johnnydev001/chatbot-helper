@@ -41,10 +41,16 @@ steps:
       containerRegistry: 'Docker Hub connection'
 
   - task: Docker@2
-    displayName: Docker build and push image
+    displayName: Docker build image
     inputs:
-        command: buildAndPush
+        command: build
         containerRegistry: 'Docker Hub connection'
+
+  - task: Docker@2
+    displayName: Docker push image
+    inputs:
+      command: push
+      containerRegistry: 'Docker Hub connection'
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
