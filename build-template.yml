@@ -34,11 +34,11 @@ steps:
       customCommand: run build
       workingDir: ${{ parameters.workingDir }}
 
-  - script: docker login -u johnnymacarroni95 -p Fl1337State
+  - script: docker login -u ${{parameters.dockerUsername}} -p ${{parameters.dockerPassword}}
     displayName: Docker login
     workingDirectory: ${{ parameters.workingDir }}
 
-  - script: docker build -t ${{parameters.dockerImageName}} ${{ parameters.workingDir }}
+  - script: docker build -t ${{parameters.dockerImageName}}
     displayName: Build docker image
     workingDirectory: ${{ parameters.workingDir }}
 
