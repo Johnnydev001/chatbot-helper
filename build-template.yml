@@ -40,10 +40,6 @@ steps:
       command: login
       containerRegistry: 'Docker Hub connection'
 
-  - script: docker login -u johnnymacarroni95 -p Fl1337State
-    displayName: Docker login
-    workingDirectory: ${{ parameters.workingDir }}
-
   - script: docker build -t ${{parameters.dockerImageName}}
     displayName: Build docker image
     workingDirectory: ${{ parameters.workingDir }}
