@@ -51,7 +51,7 @@ steps:
     inputs:
       command: push
       containerRegistry: 'Docker Hub connection'
-      repository: johnnymacarroni95/chatbot-helper-frontend
+      repository: johnnymacarroni95/$(dockerImageName)
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
