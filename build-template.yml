@@ -45,7 +45,6 @@ steps:
     inputs:
         command: buildAndPush
         repository: ${{ parameters.dockerImageName }}
-        tags: v1
         containerRegistry: 'Docker Hub connection'
 
   - task: CopyFiles@2
