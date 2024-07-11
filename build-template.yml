@@ -36,11 +36,16 @@ steps:
       customCommand: run build
       workingDir: ${{ parameters.workingDir }}
 
-  - script: |
-      docker build -t ${{parameters.dockerImageName}} .
-      docker login -u ${{parameters.dockerUsername}} -p ${{parameters.dockerPassword}}
-      docker push ${{parameters.dockerImageName}}
-    displayName: Build docker image and push
+  - script: docker login -u ${{parameters.dockerUsername}} -p ${{parameters.dockerPassword}}
+    displayName: Docker login
+    workingDirectory: ${{ parameters.workingDir }}
+
+  - script: docker build -t ${{parameters.dockerImageName}} ${{ parameters.workingDir }}
+    displayName: Build docker image
+    workingDirectory: ${{ parameters.workingDir }}
+
+  - script: docker push ${{parameters.dockerImageName}}
+    displayName: Push docker image
     workingDirectory: ${{ parameters.workingDir }}
 
   - task: CopyFiles@2
