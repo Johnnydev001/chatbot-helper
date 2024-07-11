@@ -51,6 +51,7 @@ steps:
     inputs:
       command: push
       containerRegistry: 'Docker Hub connection'
+      repository: $(dockerImageName)
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
