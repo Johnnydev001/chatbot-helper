@@ -44,8 +44,10 @@ steps:
     displayName: Docker build and push image
     inputs:
         command: buildAndPush
-        repository: chatbot-helper-frontend:v1
+        repository: $(dockerImageName)
         containerRegistry: 'Docker Hub connection'
+        tags: |
+          $(dockerImageName):v1
 
   - task: CopyFiles@2
     displayName: Copy build output to artifact directory
