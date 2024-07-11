@@ -34,7 +34,7 @@ steps:
       customCommand: run build
       workingDir: ${{ parameters.workingDir }}
 
-  - script: docker login -u ${{parameters.dockerUsername}} -p ${{parameters.dockerPassword}}
+  - script: docker login -u $($dockerUsername) -p $(parameters.dockerPassword)
     displayName: Docker login
     workingDirectory: ${{ parameters.workingDir }}
 
