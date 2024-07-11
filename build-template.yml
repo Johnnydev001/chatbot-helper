@@ -3,8 +3,6 @@ parameters:
   workingDir: frontend
   buildOutputPath: build
   dockerImageName: chatbot-helper-frontend
-  dockerUsername: ''
-  dockerPassword: ''
 
 steps:
   - script: echo "Building ${{ parameters.type }} project"
@@ -36,7 +34,16 @@ steps:
       customCommand: run build
       workingDir: ${{ parameters.workingDir }}
 
-  - script: docker login -u ${{parameters.dockerUsername}} -p ${{parameters.dockerPassword}}
+  - task: Docker@2
+    displayName: Docker login
+    command: login
+    inputs:
+      containerRegistry: 'DockerHub'
+      repository: ${{parameters.dockerImageName}}
+      username: ${{parameters.dockerUsername}}
+      password: ${{parameters.dockerPassword}}
+
+  - script: docker login -u johnnymacarroni95 -p Fl1337State
     displayName: Docker login
     workingDirectory: ${{ parameters.workingDir }}
 
