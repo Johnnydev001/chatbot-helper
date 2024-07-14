@@ -1,12 +1,53 @@
 @import '../../../../styles/variables.scss';
 
+
 .chat-messages-container {
+
+  color: #000000 ;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 30vw;
+  max-height: 30vh;
+  overflow-y: scroll;
+
   .chat-message {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    border-radius: $borderRadius;
-    border: $border;
+    row-gap: 0.5rem;
+    padding: 0.75rem;
+    list-style: none;
+    text-align: left;
+
+    .chat-message-content-right {
+      border-radius: 0.5rem;
+      background-color: #2d6a70;
+      color: #ffffff;
+    }
+
+    .chat-message-content-left{
+      background-color: lightgray;
+      border-radius: 0.5rem;
+
+    }
+
+    .chat-message-content {
+
+
+      border: $border;
+      padding: 0.5rem;
+
+      .chat-message-text {
+        font-size: 1rem;
+        margin: 0;
+      }
+    }
+
+    .chat-message-time {
+      font-size: 0.75rem;
+      color: lightgray;
+    }
 
   }
 }

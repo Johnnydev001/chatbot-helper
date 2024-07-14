@@ -1,12 +1,11 @@
+import './chatMessages.scss';
 import { ChatMessageType } from "./ChatMessages"
 
-export const ChatMessage = ({sender = '', message =  '', time = '' }: ChatMessageType) => {
+export const ChatMessage = ({sender= '', message =  '' }: ChatMessageType) => {
 
-    return <article className={'chat-message'}>
+    return <article className={`chat-message-content ${sender === 'user' ? 'chat-message-content-left': 'chat-message-content-right' }`}>
 
-        <h1>{sender}</h1>
-        <p> {message}</p>
-        <time dateTime={time}>{time}</time>
+        <span className={'chat-message-text'}> {message}</span>
 
     </article>
 
