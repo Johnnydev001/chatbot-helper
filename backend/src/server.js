@@ -1,9 +1,9 @@
+
 import express from 'express'
 import {ApolloServer} from "apollo-server-express";
 import typeDefs from "./schema/typeDefs/index.js";
 import resolvers from "./schema/resolvers/index.js";
 import cors from 'cors'
-
 
 const startApolloServer = async () => {
 

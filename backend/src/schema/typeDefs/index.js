@@ -7,7 +7,7 @@ const typeDefs = gql(`
         getMessages: [String]
     }
     type Mutation {
-        sendMessage(message: String): String
+        sendMessage(message: String!): String
     }
 
 
