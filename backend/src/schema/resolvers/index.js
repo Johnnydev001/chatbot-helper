@@ -15,12 +15,13 @@ const resolvers = {
         sendMessage: async (parent,  args, context) => {
             const { message = ''} = args;
             try{
-                const response = openai.chat.completions.create({
-                    messages: [{ role: "system", content: "You are a helpful assistant." }],
-                    model: "gpt-3.5-turbo",
-                })
-
-                return response.json();
+                // const response = openai.chat.completions.create({
+                //     messages: [{ role: "system", content: "You are a helpful assistant." }],
+                //     model: "gpt-3.5-turbo",
+                // })
+                //
+                // return response.json();
+                return "works"
             }catch (e){
                 console.error('Error getting response from OpenAI', e)
             }
