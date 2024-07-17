@@ -1,9 +1,12 @@
 import dotenv from 'dotenv'
+import {GoogleGenerativeAI} from "@google/generative-ai";
+
 dotenv.config()
-import OpenAI from "openai";
-const openai = new OpenAI({
-    apiKey: process.env.OPEN_AI_API_KEY
-});
+
+const geminiApi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+const model = geminiApi.getGenerativeModel({
+    model: "gemini-1.5-flash",
+})
 
 const resolvers = {
     Query: {
@@ -14,17 +17,16 @@ const resolvers = {
     Mutation:{
         sendMessage: async (parent,  args, context) => {
             const { message = ''} = args;
-            try{
-                // const response = openai.chat.completions.create({
-                //     messages: [{ role: "system", content: "You are a helpful assistant." }],
-                //     model: "gpt-3.5-turbo",
-                // })
-                //
-                // return response.json();
-                return "works"
-            }catch (e){
-                console.error('Error getting response from OpenAI', e)
+
+            try {
+                const result = await model.generateContent(message);
+                const response = await result.response;
+                return response.text();
+            } catch (e){
+                console.log(e)
             }
+
+
         }
     }
 }
