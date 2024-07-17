@@ -9,12 +9,14 @@ export const ChatView = (
         handleInputChange = () => {},
         handleFormSubmit = () => {},
         messagesList = [],
+        displayBadSentimentMessage = false
 
     }: {
         handleBackClick:  (event: { preventDefault: () => void }) => void,
         handleInputChange: (event: ChangeEvent<HTMLInputElement>) => void,
-        handleFormSubmit: () => void,
+        handleFormSubmit: (event: {preventDefault: () => void}) => void,
         messagesList: Array<ChatMessageTypeWithTime>,
+        displayBadSentimentMessage: boolean
     }) => {
 
     return (
@@ -35,19 +37,23 @@ export const ChatView = (
 
                     )}
                 </div>
-                <div className={'btns-container'}>
+                <form onSubmit={handleFormSubmit} className={'btns-container'}>
 
                     <article className={'submit-form'} >
                         <input aria-label={'text input'} className={'text-input'} type={'text'} title={'Type a message'}
                                placeholder={'Type a message'} onChange={handleInputChange}/>
-                        <button className={'send-btn'} aria-label={'send message'} title={'Send message'}
-                                role={"button"} onClick={handleFormSubmit}> <SendIcon/>
+                        <button disabled={displayBadSentimentMessage} className={'send-btn'} aria-label={'send message'} title={'Send message'}
+                                role={"button"} type={'submit'}> <SendIcon/>
                         </button>
 
                     </article>
 
+                    {displayBadSentimentMessage && (
+                        <p className={'bad-sentiment-message'}>Sorry, I can't send negative messages.</p>
+                    )}
 
-                </div>
+
+                </form>
 
 
             </div>

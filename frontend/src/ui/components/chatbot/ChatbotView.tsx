@@ -20,7 +20,7 @@ export const ChatbotView = (
 
                 <h2 className={'sub-heading'}>My name is Johnny.</h2>
                 <button onClick={handleClick} className={'btn'} role={"button"} title={"ask question button"}>
-                    Ask me a question
+                    Send a message!
 
                 </button>
             </div>
