@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.15.0",
+    "@nlpjs/basic": "^4.27.0",
     "apollo-server-express": "^3.13.0",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",

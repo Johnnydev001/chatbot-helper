@@ -29,6 +29,7 @@ export const ChatView = (
             <div className={'chat-sub-container'}>
 
                 <div className={'chat-messages'}>
+
                     {messagesList?.length > 0 && (
                         <ChatMessages chatMessages={messagesList}/>
 

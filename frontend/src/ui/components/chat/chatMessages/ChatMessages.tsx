@@ -18,9 +18,21 @@ export const ChatMessages = ({chatMessages = []}: {chatMessages: Array<ChatMessa
 
             {
                 chatMessages?.length > 0 && chatMessages.map((message, index = 0) => {
-                    return <li className={'chat-message'} key={index}>
-                        <ChatMessage sender={message?.sender} message={message?.message} />
-                        <time className={'chat-message-time'} dateTime={message?.time}>{message?.time}</time>
+
+                    const senderPascalCase = message?.sender?.charAt(0).toUpperCase() + message?.sender?.slice(1)
+
+                    return <li
+                        className={`chat-message ${message?.sender === 'user' ? 'chat-message-left' : 'chat-message-right'}`}
+                        key={index}>
+                        <ChatMessage sender={message?.sender} message={message?.message}/>
+
+                        <div className={'chat-message-time'}>
+                            {senderPascalCase + ' at '
+                            }
+                            <time  dateTime={message?.time}>{message?.time}</time>
+
+                        </div>
+
                     </li>
                 })
             }

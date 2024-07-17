@@ -8,9 +8,15 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 15rem;
   max-height: 30rem;
   overflow-y: scroll;
+
+  .chat-message-left{
+    align-items: start;
+  }
+  .chat-message-right{
+    align-items: end;
+  }
 
   .chat-message {
     display: flex;

@@ -9,11 +9,6 @@ const model = geminiApi.getGenerativeModel({
 })
 
 const resolvers = {
-    Query: {
-        getMessages: async(parent,  args, context) => {
-            return ['messg1', 'msg2']
-        }
-    },
     Mutation:{
         sendMessage: async (parent,  args, context) => {
             const { message = ''} = args;
@@ -23,10 +18,8 @@ const resolvers = {
                 const response = await result.response;
                 return response.text();
             } catch (e){
-                console.log(e)
+                console.log('Error getting response from Gemini due to: ' ,e)
             }
-
-
         }
     }
 }

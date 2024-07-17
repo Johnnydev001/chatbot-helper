@@ -26,7 +26,7 @@ export const Chat = (
         setInputMessage({
             sender: 'user',
             message: event?.target?.value,
-            time: new Date().getTime().toString()
+            time: new Intl.DateTimeFormat('pt-PT').format(new Date())
         })
 
     }
@@ -46,7 +46,7 @@ export const Chat = (
             const chatbotMessage = {
                 sender: 'chatbot',
                 message: data.sendMessage,
-                time: new Date().getTime().toString()
+                time: new Intl.DateTimeFormat('pt-PT').format(new Date())
             }
             setMessagesList((messages) => [...messages, chatbotMessage])
 
