@@ -1,14 +1,26 @@
 import './App.css'
 import {Chatbot} from "./ui/components/chatbot/Chatbot.tsx";
-import {Chat} from "./ui/components/chat/Chat.tsx";
-import {useState} from "react";
+import {Suspense, useState} from "react";
+import {CustomCanvas} from "./ui/components/customCanvas/CustomCanvas.tsx";
+import {Loader} from "@react-three/drei";
 
 function App() {
 
   const [displayChatbotIntro, setDisplayChatbotIntro] = useState<boolean>(true)
 
-  return displayChatbotIntro ?  <Chatbot displayChatbotIntro={displayChatbotIntro} setDisplayChatbotIntro={setDisplayChatbotIntro}/> :
-      <Chat displayChatbotIntro={displayChatbotIntro} setDisplayChatbotIntro={setDisplayChatbotIntro}/>
+  return (
+      <>
+        <Loader/>
+        <CustomCanvas/>
+      </>
+
+
+  )
+
+
+
+  //displayChatbotIntro ?  <Chatbot displayChatbotIntro={displayChatbotIntro} setDisplayChatbotIntro={setDisplayChatbotIntro}/> :
+      // <Chat displayChatbotIntro={displayChatbotIntro} setDisplayChatbotIntro={setDisplayChatbotIntro}/>
 
 }
 
