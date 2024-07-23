@@ -19,8 +19,6 @@ function App() {
 
 
 
-  //displayChatbotIntro ?  <Chatbot displayChatbotIntro={displayChatbotIntro} setDisplayChatbotIntro={setDisplayChatbotIntro}/> :
-      // <Chat displayChatbotIntro={displayChatbotIntro} setDisplayChatbotIntro={setDisplayChatbotIntro}/>
 
 }
 

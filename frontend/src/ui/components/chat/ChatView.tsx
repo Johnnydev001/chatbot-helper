@@ -22,11 +22,6 @@ export const ChatView = (
     return (
         <section className={'chat-container'}>
 
-            <div className={'navigation'}>
-                <button className={'back-btn'} aria-label={'go back'} title={'Go back'} role={"button"} onClick={handleBackClick}><BackIcon/></button>
-                <h1 className={'heading'}>Johnny</h1>
-
-            </div>
 
             <div className={'chat-sub-container'}>
 
@@ -41,10 +36,8 @@ export const ChatView = (
 
                     <article className={'submit-form'} >
                         <input aria-label={'text input'} className={'text-input'} type={'text'} title={'Type a message'}
-                               placeholder={'Type a message'} onChange={handleInputChange}/>
-                        <button disabled={displayBadSentimentMessage} className={'send-btn'} aria-label={'send message'} title={'Send message'}
-                                role={"button"} type={'submit'}> <SendIcon/>
-                        </button>
+                               placeholder={'Type a message and enter...'} onChange={handleInputChange}/>
+
 
                     </article>
 

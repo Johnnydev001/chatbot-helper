@@ -7,9 +7,10 @@
 
   list-style: none;
   margin: 0;
-  padding: 0;
-  max-height: 30rem;
+  padding: 1rem;
+  height: 15rem;
   overflow-y: scroll;
+
 
   .chat-message-left{
     align-items: start;
@@ -27,32 +28,34 @@
     text-align: left;
 
     .chat-message-content-right {
-      border-radius: 0.5rem;
+
       background-color: #2d6a70;
       color: #ffffff;
     }
 
     .chat-message-content-left{
       background-color: lightgray;
-      border-radius: 0.5rem;
 
     }
 
     .chat-message-content {
 
       max-width: 15rem;
-      border: $border;
       padding: 0.5rem;
+      color: #13f41f;
+      background-color: #06120b;
+
 
       .chat-message-text {
         font-size: 1rem;
         margin: 0;
+        color: #13f41f;
       }
     }
 
     .chat-message-time {
-      font-size: 0.75rem;
-      color: lightgray;
+      font-size: 0.6rem;
+      color: #276c3a;
     }
 
   }

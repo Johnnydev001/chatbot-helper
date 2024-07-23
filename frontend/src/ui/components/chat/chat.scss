@@ -2,47 +2,17 @@
 
 .chat-container {
 
+  border-radius: 30%;
+  max-width: 13rem;
+
   color: #000000;
+  background-color: #051e11;
 
   display: grid;
   justify-items: center;
   padding: 1rem;
   margin: 0;
 
-  border-bottom-left-radius: $borderRadius;
-  border-bottom-right-radius: $borderRadius;
-
-  .navigation {
-    width: 100%;
-
-    border-top-left-radius: $borderRadius;
-    border-top-right-radius: $borderRadius;
-
-    align-self: start;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    align-items: center;
-    padding: 1rem;
-    color: white;
-    background-color: #38848c;
-
-    .back-btn {
-      color: #ffffff;
-      background-color: transparent;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      grid-column: 1;
-      text-align: left;
-    }
-
-    .heading {
-        font-size: 1.25rem;
-        color: #ffffff;
-      grid-column: 2;
-    }
-
-  }
 
   .chat-sub-container {
     padding: 1rem;
@@ -50,16 +20,14 @@
     display: grid;
     align-self: end;
     justify-items: center;
-    border: $border;
-    border-bottom-left-radius: $borderRadius;
-    border-bottom-right-radius: $borderRadius;
 
     .chat-messages {
       width: 100%;
-      min-height: 30vh;
+      height: 28.5vh;
     }
 
     .btns-container {
+
       width: 100%;
 
       .bad-sentiment-message{
@@ -69,48 +37,31 @@
       }
 
       .submit-form {
+        padding: 1rem;
         align-self: end;
         display: flex;
         column-gap: 1rem;
         .text-input {
           width: 100%;
-          padding:1rem;
-          color: #000000;
-          background-color: #ffffff;
-          border: $border;
+          padding:0.5rem;
+          color: #0df90d;
+          background-color: #06120b;
           justify-self: start;
           font-size: 1rem;
-          border-radius: $borderRadius;
+          border: none;
+          text-align: center;
         }
 
         .text-input::placeholder{
-          color: #D3D3D3FF;
+          color: #0df90d;
+          text-align: center;
+          font-size: 0.75rem;
         }
 
         .text-input:focus {
-          outline: 4px auto -webkit-focus-ring-color;
+          outline-color: transparent;
         }
 
-        .send-btn {
-          border-radius: 8px;
-          border: $border;
-          padding: 0.6em 1.2em;
-          font-size: 1em;
-          font-weight: 500;
-          font-family: inherit;
-          cursor: pointer;
-          transition: border-color 0.25s;
-
-          background-color: #2d6a70;
-        }
-        .send-btn:hover {
-          background-color: #38848c;
-        }
-
-        .send-btn:disabled{
-          pointer-events: none;
-          opacity: 50%;
-        }
 
       }
 

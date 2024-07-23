@@ -27,8 +27,7 @@ export const ChatMessages = ({chatMessages = []}: {chatMessages: Array<ChatMessa
                         <ChatMessage sender={message?.sender} message={message?.message}/>
 
                         <div className={'chat-message-time'}>
-                            {senderPascalCase + ' at '
-                            }
+
                             <time  dateTime={message?.time}>{message?.time}</time>
 
                         </div>
