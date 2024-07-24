@@ -29,11 +29,15 @@
     .btns-container {
 
       width: 100%;
+      display: grid;
 
       .bad-sentiment-message{
         color: #FF0000FF;
         font-size: 0.75rem;
         margin-bottom: 0;
+        max-width: 10rem;
+        text-align: center;
+        justify-self: center;
       }
 
       .submit-form {

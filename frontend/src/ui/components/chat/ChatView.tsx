@@ -1,18 +1,15 @@
 import {ChatMessages, ChatMessageTypeWithTime} from "./chatMessages/ChatMessages.tsx";
 import {ChangeEvent} from "react";
-import {BackIcon} from "../../icons/BackIcon.tsx";
 // @ts-ignore
 import {SendIcon} from "../../icons/SendIcon.tsx";
 export const ChatView = (
     {
-        handleBackClick = () => {},
         handleInputChange = () => {},
         handleFormSubmit = () => {},
         messagesList = [],
         displayBadSentimentMessage = false
 
     }: {
-        handleBackClick:  (event: { preventDefault: () => void }) => void,
         handleInputChange: (event: ChangeEvent<HTMLInputElement>) => void,
         handleFormSubmit: (event: {preventDefault: () => void}) => void,
         messagesList: Array<ChatMessageTypeWithTime>,
