@@ -1,12 +1,12 @@
 import {Canvas} from "@react-three/fiber";
 import {Model} from "../3dmodel/Model.tsx";
-import {CameraControls, Center, Environment, MeshReflectorMaterial, OrbitControls, Text} from '@react-three/drei'
+import {Center, Environment, MeshReflectorMaterial, OrbitControls, Text} from '@react-three/drei'
 import {EffectComposer, Bloom,  Vignette} from '@react-three/postprocessing'
 
 import './customCanvas.scss'
 import {Suspense} from "react";
 
-export const CustomCanvas = ({chatbotIsAngry = false}) => {
+export const CustomCanvas = () => {
 
     return <Canvas className={'custom-canvas'} dpr={[1, 2]} flat shadows={'soft'} gl={{antialias: true}} camera={{
         position: [0, 0, 23],
@@ -30,7 +30,7 @@ export const CustomCanvas = ({chatbotIsAngry = false}) => {
                 <Text castShadow={true} position={[0,-1,-4]} letterSpacing={0} fontSize={6.5} fontWeight={700} strokeWidth={10} strokeColor={'white'} outlineColor={'gray'} outlineBlur={0.2} outlineOpacity={1}  color="white" >
                     TALK TO ME
                 </Text>
-                <Model chatbotIsAngry={chatbotIsAngry}/>
+                <Model />
                 <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -4, 0]}>
                     <planeGeometry args={[1000, 1000]}/>
                     <MeshReflectorMaterial

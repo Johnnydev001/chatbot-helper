@@ -16,4 +16,4 @@ RUN yarn build
 # Expose port 3000
 EXPOSE 3000
 
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]

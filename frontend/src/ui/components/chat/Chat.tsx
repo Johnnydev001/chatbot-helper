@@ -1,6 +1,6 @@
 import './chat.scss'
 import {ChatView} from "./ChatView.tsx";
-import {ChangeEvent, useCallback, useEffect, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {ChatMessageTypeWithTime} from "./chatMessages/ChatMessages.tsx";
 import {gql, useMutation} from "@apollo/client";
 import {getSentimentFromMessage} from "../../../service/sentiment";
@@ -11,10 +11,9 @@ const SEND_MESSAGE_MUTATION = gql`
 `;
 export const Chat = (
 
-    { isChatbotAngry = false,  setIsChatbotAngry =() => {}, displayChatbotIntro = false, setDisplayChatbotIntro = () => {}}: {
+    { isChatbotAngry = false,  setIsChatbotAngry =() => {}}: {
         isChatbotAngry: boolean,
         setIsChatbotAngry: (isChatbotAngry: boolean) => void,
-        displayChatbotIntro: boolean, setDisplayChatbotIntro: (displayChatBotIntro: boolean) => void
     }) => {
 
     const [mutateFunction, { data }] = useMutation(SEND_MESSAGE_MUTATION);
@@ -23,11 +22,6 @@ export const Chat = (
 
     const [messagesList, setMessagesList] = useState<Array<ChatMessageTypeWithTime>>([])
 
-
-    const handleBackClick = useCallback((event: { preventDefault: () => void }) => {
-        event.preventDefault()
-        setDisplayChatbotIntro(!displayChatbotIntro)
-    }, [displayChatbotIntro, setDisplayChatbotIntro])
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>  {
         event.preventDefault();

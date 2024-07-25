@@ -14,7 +14,7 @@ import { ApolloProvider } from '@apollo/client';
 import {useState} from "react";
 
 export function Model() {
-    const { nodes, materials } = useGLTF('/models/scifi-computer.glb')
+    const { nodes, materials } : any = useGLTF('/models/scifi-computer.glb')
     const [ isChatbotAngry, setIsChatbotAngry] = useState(false)
     return (
 
@@ -1014,7 +1014,7 @@ export function Model() {
 
                         <Html scale={[0.29,0.14,0.2]} rotation={[Math.PI / 2 ,Math.PI  ,Math.PI * 1.5]}  position={[0, 0.2948, 0.002]} fullscreen={true} occlude={true}  transform>
                             <ApolloProvider client={client}>
-                                <Chat isChatbotAngry={isChatbotAngry} setIsChatbotAngry={setIsChatbotAngry}  displayChatbotIntro={false} setDisplayChatbotIntro={()=>{}}/>
+                                <Chat isChatbotAngry={isChatbotAngry} setIsChatbotAngry={setIsChatbotAngry} />
 
                             </ApolloProvider>
 
