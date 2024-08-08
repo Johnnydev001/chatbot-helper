@@ -11,9 +11,11 @@ const SEND_MESSAGE_MUTATION = gql`
 `;
 export const Chat = (
 
-    { isChatbotAngry = false,  setIsChatbotAngry =() => {}}: {
+    { setIsTyping = () => {}, isChatbotAngry = false,  setIsChatbotAngry =() => {}, setIsControlsEnabled = () => {}}: {
+        setIsTyping: (isTyping: boolean) => void,
         isChatbotAngry: boolean,
         setIsChatbotAngry: (isChatbotAngry: boolean) => void,
+        setIsControlsEnabled: (isControlsEnabled: boolean) => void,
     }) => {
 
     const [mutateFunction, { data }] = useMutation(SEND_MESSAGE_MUTATION);
@@ -24,6 +26,7 @@ export const Chat = (
 
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>  {
+
         event.preventDefault();
 
         setInputMessage({
@@ -75,7 +78,7 @@ export const Chat = (
     }, [data?.sendMessage])
 
     return (
-        <ChatView displayBadSentimentMessage={isChatbotAngry} messagesList={messagesList} handleFormSubmit={handleFormSubmit} handleInputChange={handleInputChange} />
+        <ChatView setIsControlsEnabled={setIsControlsEnabled} setIsTyping={setIsTyping} displayBadSentimentMessage={isChatbotAngry} messagesList={messagesList} handleFormSubmit={handleFormSubmit} handleInputChange={handleInputChange} />
 
     )
 }

@@ -4,20 +4,24 @@ import {ChangeEvent} from "react";
 import {SendIcon} from "../../icons/SendIcon.tsx";
 export const ChatView = (
     {
+        setIsTyping = () => {},
         handleInputChange = () => {},
         handleFormSubmit = () => {},
         messagesList = [],
-        displayBadSentimentMessage = false
+        displayBadSentimentMessage = false,
+        setIsControlsEnabled = () => {}
 
     }: {
+        setIsTyping: (isTyping: boolean) => void,
         handleInputChange: (event: ChangeEvent<HTMLInputElement>) => void,
         handleFormSubmit: (event: {preventDefault: () => void}) => void,
         messagesList: Array<ChatMessageTypeWithTime>,
-        displayBadSentimentMessage: boolean
+        displayBadSentimentMessage: boolean,
+        setIsControlsEnabled: (isControlsEnabled: boolean) => void
     }) => {
 
     return (
-        <section className={'chat-container'}>
+        <section className={'chat-container'} onPointerOver={() => setIsControlsEnabled(false)} onPointerOut={() => setIsControlsEnabled(true)} >
 
 
             <div className={'chat-sub-container'}>
@@ -33,7 +37,8 @@ export const ChatView = (
 
                     <article className={'submit-form'} >
                         <input aria-label={'text input'} className={'text-input'} type={'text'} title={'Type a message'}
-                               placeholder={'Type a message and enter...'} onChange={handleInputChange}/>
+                               onClick={() => setIsTyping(true)}
+                               placeholder={'Type a message and click enter...'} onChange={handleInputChange}/>
 
 
                     </article>
