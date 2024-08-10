@@ -1,6 +1,6 @@
 import './chat.scss'
 import {ChatView} from "./ChatView.tsx";
-import {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {ChatMessageTypeWithTime} from "./chatMessages/ChatMessages.tsx";
 import {gql, useMutation} from "@apollo/client";
 import {getSentimentFromMessage} from "../../../service/sentiment";
@@ -11,8 +11,9 @@ const SEND_MESSAGE_MUTATION = gql`
 `;
 export const Chat = (
 
-    { setIsTyping = () => {}, isChatbotAngry = false,  setIsChatbotAngry =() => {}, setIsControlsEnabled = () => {}}: {
-        setIsTyping: (isTyping: boolean) => void,
+    { cameraControlsRef, isControlsEnabled = true, isChatbotAngry = false,  setIsChatbotAngry =() => {}, setIsControlsEnabled = () => {}}: {
+        cameraControlsRef: React.MutableRefObject<null>,
+        isControlsEnabled : boolean,
         isChatbotAngry: boolean,
         setIsChatbotAngry: (isChatbotAngry: boolean) => void,
         setIsControlsEnabled: (isControlsEnabled: boolean) => void,
@@ -28,6 +29,7 @@ export const Chat = (
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>  {
 
         event.preventDefault();
+
 
         setInputMessage({
             sender: 'user',
@@ -46,6 +48,14 @@ export const Chat = (
             }
         })
         setMessagesList((messages) => [...messages, inputMessage])
+    }
+
+    const handleInputClick = () => {
+
+        if (cameraControlsRef && cameraControlsRef?.current) {
+            cameraControlsRef?.current.setLookAt(0, -2,5, 0, -2, 0, true);
+        }
+
     }
 
     useEffect(() => {
@@ -78,7 +88,7 @@ export const Chat = (
     }, [data?.sendMessage])
 
     return (
-        <ChatView setIsControlsEnabled={setIsControlsEnabled} setIsTyping={setIsTyping} displayBadSentimentMessage={isChatbotAngry} messagesList={messagesList} handleFormSubmit={handleFormSubmit} handleInputChange={handleInputChange} />
+        <ChatView handleInputClick={handleInputClick} setIsControlsEnabled={setIsControlsEnabled}  displayBadSentimentMessage={isChatbotAngry} messagesList={messagesList} handleFormSubmit={handleFormSubmit} handleInputChange={handleInputChange} />
 
     )
 }

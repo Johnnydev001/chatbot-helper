@@ -11,10 +11,12 @@ export type ChatMessageTypeWithTime = {
     sender: string;
     time:string;
 }
-export const ChatMessages = ({chatMessages = []}: {chatMessages: Array<ChatMessageTypeWithTime>}) => {
+export const ChatMessages = ({ setIsControlsEnabled = () => {},chatMessages = []}: {setIsControlsEnabled: (isControlsEnabled: boolean) => void,chatMessages: Array<ChatMessageTypeWithTime>}) => {
 
     const mapChatMessages = () => {
-        return( <ul role={'list'} className={'chat-messages-container'}>
+        return( <ul role={'list'} className={'chat-messages-container'} onPointerOver={() => setIsControlsEnabled(false)}
+
+                    onPointerOut={() => setIsControlsEnabled(true)}>
 
             {
                 chatMessages?.length > 0 && chatMessages.map((message, index = 0) => {

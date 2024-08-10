@@ -5,40 +5,28 @@ import {
     Center,
     Environment,
     MeshReflectorMaterial,
-    OrbitControls,
     Text,
-    useCursor
 } from '@react-three/drei'
 import {EffectComposer, Bloom,  Vignette} from '@react-three/postprocessing'
 
 import './customCanvas.scss'
-import {Suspense, useEffect, useRef, useState} from "react";
+import {Suspense, useRef, useState} from "react";
 
 export const CustomCanvas = () => {
 
     const controlProps = {
-        minPolarAngle: Math.PI / 3.6,
-        maxPolarAngle: Math.PI / 2.1 ,
-        minAzimuthAngle: Math.PI * -0.3,
-        maxAzimuthAngle: Math.PI * 0.3,
+        minPolarAngle: Math.PI / 2.3,
+        maxPolarAngle: Math.PI / 2.5 ,
+        minAzimuthAngle: Math.PI * -0.15,
+        maxAzimuthAngle: Math.PI * 0.15,
         minDistance:5,
         maxDistance:15
     }
 
     const [isControlsEnabled, setIsControlsEnabled] = useState(true)
-    const [isTyping, setIsTyping] = useState(false)
 
-    const cameraControlsRef = useRef()
+    const cameraControlsRef = useRef(null)
 
-    useEffect(() => {
-        if(isControlsEnabled && isTyping){
-            if (cameraControlsRef?.current){
-                cameraControlsRef?.current?.setLookAt(0, -2,5, 0, -2, 0, true);
-
-            }
-
-        }
-    }, [isControlsEnabled, isTyping]);
     return (
 
         <Canvas className={'custom-canvas'} dpr={[1, 2]} flat shadows={'soft'} gl={{antialias: true}} camera={{position: [0, 0, 23], fov: 60}}>
@@ -52,17 +40,17 @@ export const CustomCanvas = () => {
         <fog attach="fog" args={['#191920', 15, 25]}/>
         <ambientLight intensity={0.5}/>
         <directionalLight castShadow={true} position={[1.5, 1, 1.5]} intensity={10} shadow-mapSize={1024}/>
-            {isControlsEnabled && (
-                <CameraControls ref={cameraControlsRef} {...controlProps}/>
+        {isControlsEnabled && (
+            <CameraControls ref={cameraControlsRef} {...controlProps}/>
 
-            )}
+        )}
 
             <Suspense fallback={null}>
             <Center >
                 <Text castShadow={true} position={[0,-1,-4]} letterSpacing={0} fontSize={6.5} fontWeight={700} strokeWidth={10} strokeColor={'white'} outlineColor={'gray'} outlineBlur={0.2} outlineOpacity={1}  color="white" >
                     TALK TO ME
                 </Text>
-                <Model isTyping={isTyping} setIsTyping={setIsTyping} setIsControlsEnabled={setIsControlsEnabled}/>
+                <Model isControlsEnabled={isControlsEnabled} cameraControlsRef={cameraControlsRef}  setIsControlsEnabled={setIsControlsEnabled}/>
                 <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -4, 0]}>
                     <planeGeometry args={[1000, 1000]}/>
                     <MeshReflectorMaterial

@@ -1,10 +1,8 @@
 import {ChatMessages, ChatMessageTypeWithTime} from "./chatMessages/ChatMessages.tsx";
 import {ChangeEvent} from "react";
-// @ts-ignore
-import {SendIcon} from "../../icons/SendIcon.tsx";
 export const ChatView = (
     {
-        setIsTyping = () => {},
+        handleInputClick = () => {},
         handleInputChange = () => {},
         handleFormSubmit = () => {},
         messagesList = [],
@@ -12,7 +10,7 @@ export const ChatView = (
         setIsControlsEnabled = () => {}
 
     }: {
-        setIsTyping: (isTyping: boolean) => void,
+        handleInputClick: () => void,
         handleInputChange: (event: ChangeEvent<HTMLInputElement>) => void,
         handleFormSubmit: (event: {preventDefault: () => void}) => void,
         messagesList: Array<ChatMessageTypeWithTime>,
@@ -20,16 +18,18 @@ export const ChatView = (
         setIsControlsEnabled: (isControlsEnabled: boolean) => void
     }) => {
 
+
+
     return (
         <section className={'chat-container'} onPointerOver={() => setIsControlsEnabled(false)} onPointerOut={() => setIsControlsEnabled(true)} >
 
 
             <div className={'chat-sub-container'}>
 
-                <div className={'chat-messages'}>
+                <div className={'chat-messages'} >
 
                     {messagesList?.length > 0 && (
-                        <ChatMessages chatMessages={messagesList}/>
+                        <ChatMessages setIsControlsEnabled={setIsControlsEnabled} chatMessages={messagesList}/>
 
                     )}
                 </div>
@@ -37,8 +37,8 @@ export const ChatView = (
 
                     <article className={'submit-form'} >
                         <input aria-label={'text input'} className={'text-input'} type={'text'} title={'Type a message'}
-                               onClick={() => setIsTyping(true)}
-                               placeholder={'Type a message and click enter...'} onChange={handleInputChange}/>
+                               onClick={handleInputClick}
+                               placeholder={'Send a message...'} onChange={handleInputChange}/>
 
 
                     </article>
