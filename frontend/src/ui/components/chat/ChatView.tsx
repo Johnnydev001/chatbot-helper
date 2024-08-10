@@ -18,15 +18,26 @@ export const ChatView = (
         setIsControlsEnabled: (isControlsEnabled: boolean) => void
     }) => {
 
+    const handleBlur = () => {
+        setIsControlsEnabled(true)
+    }
+    const handlePointerOver = () => {
+        setTimeout(() => {
+            setIsControlsEnabled(false)
+        }, 4000)
+    }
 
+    const handlePointerOut = () => {
+        setIsControlsEnabled(true)
+
+    }
 
     return (
-        <section className={'chat-container'} onPointerOver={() => setIsControlsEnabled(false)} onPointerOut={() => setIsControlsEnabled(true)} >
+        <section className={'chat-container'}
+                 onBlur={handleBlur } onPointerOver={handlePointerOver}  onPointerLeave={handlePointerOut}>
+            <div className={'chat-sub-container'}  >
 
-
-            <div className={'chat-sub-container'}>
-
-                <div className={'chat-messages'} >
+                <div className={'chat-messages'}  >
 
                     {messagesList?.length > 0 && (
                         <ChatMessages setIsControlsEnabled={setIsControlsEnabled} chatMessages={messagesList}/>
@@ -37,7 +48,11 @@ export const ChatView = (
 
                     <article className={'submit-form'} >
                         <input aria-label={'text input'} className={'text-input'} type={'text'} title={'Type a message'}
-                               onClick={handleInputClick}
+
+                               onClick={() => {
+                                   handleInputClick()
+
+                               }}
                                placeholder={'Send a message...'} onChange={handleInputChange}/>
 
 
@@ -49,11 +64,7 @@ export const ChatView = (
 
 
                 </form>
-
-
             </div>
-
-
         </section>
     )
 }

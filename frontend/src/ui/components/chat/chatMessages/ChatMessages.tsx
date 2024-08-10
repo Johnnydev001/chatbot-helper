@@ -14,9 +14,8 @@ export type ChatMessageTypeWithTime = {
 export const ChatMessages = ({ setIsControlsEnabled = () => {},chatMessages = []}: {setIsControlsEnabled: (isControlsEnabled: boolean) => void,chatMessages: Array<ChatMessageTypeWithTime>}) => {
 
     const mapChatMessages = () => {
-        return( <ul role={'list'} className={'chat-messages-container'} onPointerOver={() => setIsControlsEnabled(false)}
-
-                    onPointerOut={() => setIsControlsEnabled(true)}>
+        return( <ul role={'list'} className={'chat-messages-container'}
+                    >
 
             {
                 chatMessages?.length > 0 && chatMessages.map((message, index = 0) => {

@@ -1014,17 +1014,12 @@ export function Model({cameraControlsRef, isControlsEnabled = true, setIsControl
                     position={[1.587, -0.053, 0.001]}
                     rotation={[0, 0, -1.444]}
                     material-color={'#051e11'}
-
-
                 >
-
-                        <Html scale={[0.29,0.14,0.2]} rotation={[Math.PI / 2 ,Math.PI  ,Math.PI * 1.5]}  position={[0, 0.2948, 0.002]} fullscreen={true} occlude={true}  transform>
-                            <ApolloProvider client={client}>
-                                <Chat isControlsEnabled={isControlsEnabled} cameraControlsRef={cameraControlsRef} setIsControlsEnabled={setIsControlsEnabled}  isChatbotAngry={isChatbotAngry} setIsChatbotAngry={setIsChatbotAngry} />
-                            </ApolloProvider>
-
-
-                        </Html>
+                    <Html  scale={[0.29,0.14,0.2]} rotation={[Math.PI / 2 ,Math.PI  ,Math.PI * 1.5]}  position={[0, 0.2948, 0.002]} fullscreen={true} occlude={true}  transform>
+                        <ApolloProvider client={client}>
+                            <Chat isControlsEnabled={isControlsEnabled} cameraControlsRef={cameraControlsRef} setIsControlsEnabled={setIsControlsEnabled}  isChatbotAngry={isChatbotAngry} setIsChatbotAngry={setIsChatbotAngry} />
+                        </ApolloProvider>
+                    </Html>
                 </mesh>
                 <mesh
                     castShadow

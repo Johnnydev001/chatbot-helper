@@ -11,9 +11,8 @@ const SEND_MESSAGE_MUTATION = gql`
 `;
 export const Chat = (
 
-    { cameraControlsRef, isControlsEnabled = true, isChatbotAngry = false,  setIsChatbotAngry =() => {}, setIsControlsEnabled = () => {}}: {
+    { cameraControlsRef, isChatbotAngry = false,  setIsChatbotAngry =() => {}, setIsControlsEnabled = () => {}}: {
         cameraControlsRef: React.MutableRefObject<null>,
-        isControlsEnabled : boolean,
         isChatbotAngry: boolean,
         setIsChatbotAngry: (isChatbotAngry: boolean) => void,
         setIsControlsEnabled: (isControlsEnabled: boolean) => void,
